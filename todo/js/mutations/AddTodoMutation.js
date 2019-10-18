@@ -34,6 +34,7 @@ const mutation = graphql`
           complete
           id
           text
+          ...Todo_todo
         }
       }
       user {
@@ -82,6 +83,7 @@ function commit(
       const node = store.create(id, 'Todo');
       node.setValue(text, 'text');
       node.setValue(id, 'id');
+      node.setValue(false, 'complete');
 
       const newEdge = store.create('client:newEdge:' + tempID++, 'TodoEdge');
       newEdge.setLinkedRecord(node, 'node');

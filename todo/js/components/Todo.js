@@ -17,23 +17,45 @@ import RenameTodoMutation from '../mutations/RenameTodoMutation';
 import TodoTextInput from './TodoTextInput';
 
 import React, {useState} from 'react';
-import {createFragmentContainer, graphql, type RelayProp} from 'react-relay';
+import {graphql, useFragment, useRelayEnvironment} from 'react-relay/hooks';
 import classnames from 'classnames';
-import type {Todo_todo} from 'relay/Todo_todo.graphql';
+import type {Todo_todo$key} from 'relay/Todo_todo.graphql';
 import type {Todo_user} from 'relay/Todo_user.graphql';
 
 type Props = {|
-  +relay: RelayProp,
-  +todo: Todo_todo,
-  +user: Todo_user,
+  +todo: Todo_todo$key,
+  +user: Todo_user$key,
 |};
 
-const Todo = ({relay, todo, user}: Props) => {
+const Todo = (props: Props) => {
+  const environment = useRelayEnvironment();
+  const todo = useFragment(
+    graphql`
+      fragment Todo_todo on Todo {
+        complete
+        id
+        text
+      }
+    `,
+    props.todo,
+  );
+  const user = useFragment(
+    graphql`
+      fragment Todo_user on User {
+        id
+        userId
+        totalCount
+        completedCount
+      }
+    `,
+    props.user,
+  );
+
   const [isEditing, setIsEditing] = useState<boolean>(false);
 
   const handleCompleteChange = (e: SyntheticEvent<HTMLInputElement>) => {
     const complete = e.currentTarget.checked;
-    ChangeTodoStatusMutation.commit(relay.environment, complete, todo, user);
+    ChangeTodoStatusMutation.commit(environment, complete, todo, user);
   };
 
   const handleDestroyClick = () => removeTodo();
@@ -47,11 +69,10 @@ const Todo = ({relay, todo, user}: Props) => {
 
   const handleTextInputSave = (text: string) => {
     setIsEditing(false);
-    RenameTodoMutation.commit(relay.environment, text, todo);
+    RenameTodoMutation.commit(environment, text, todo);
   };
 
-  const removeTodo = () =>
-    RemoveTodoMutation.commit(relay.environment, todo, user);
+  const removeTodo = () => RemoveTodoMutation.commit(environment, todo, user);
 
   return (
     <li
@@ -85,20 +106,4 @@ const Todo = ({relay, todo, user}: Props) => {
   );
 };
 
-export default createFragmentContainer(Todo, {
-  todo: graphql`
-    fragment Todo_todo on Todo {
-      complete
-      id
-      text
-    }
-  `,
-  user: graphql`
-    fragment Todo_user on User {
-      id
-      userId
-      totalCount
-      completedCount
-    }
-  `,
-});
+export default Todo;
