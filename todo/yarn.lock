@@ -1250,7 +1250,7 @@ babel-plugin-macros@^2.0.0:
     resolve "^1.8.1"
 
 "babel-plugin-relay@file:../../relay/dist/babel-plugin-relay":
-  version "6.0.0"
+  version "0.0.0-experimental-2489c65f"
   dependencies:
     babel-plugin-macros "^2.0.0"
 
@@ -5058,12 +5058,12 @@ react-is@^16.8.1:
   integrity sha512-PVadd+WaUDOAciICm/J1waJaSvgq+4rHE/K70j0PFqKhkTBsPv/82UGQJNXAngz1fOQLLxI6z1sEDmJDQhCTAA==
 
 "react-relay@file:../../relay/dist/react-relay":
-  version "6.0.0"
+  version "0.0.0-experimental-2489c65f"
   dependencies:
     "@babel/runtime" "^7.0.0"
     fbjs "^1.0.0"
     nullthrows "^1.1.1"
-    relay-runtime "6.0.0"
+    relay-runtime "0.0.0-experimental-2489c65f"
 
 react@^16.8.4:
   version "16.8.4"
@@ -5228,7 +5228,7 @@ regjsparser@^0.6.0:
     jsesc "~0.5.0"
 
 "relay-compiler@file:../../relay/dist/relay-compiler":
-  version "6.0.0"
+  version "0.0.0-experimental-2489c65f"
   dependencies:
     "@babel/core" "^7.0.0"
     "@babel/generator" "^7.0.0"
@@ -5243,12 +5243,12 @@ regjsparser@^0.6.0:
     fbjs "^1.0.0"
     immutable "~3.7.6"
     nullthrows "^1.1.1"
-    relay-runtime "6.0.0"
+    relay-runtime "0.0.0-experimental-2489c65f"
     signedsource "^1.0.0"
     yargs "^9.0.0"
 
-relay-runtime@6.0.0, "relay-runtime@file:../../relay/dist/relay-runtime":
-  version "6.0.0"
+relay-runtime@0.0.0-experimental-2489c65f, "relay-runtime@file:../../relay/dist/relay-runtime":
+  version "0.0.0-experimental-2489c65f"
   dependencies:
     "@babel/runtime" "^7.0.0"
     fbjs "^1.0.0"
