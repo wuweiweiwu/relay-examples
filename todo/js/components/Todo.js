@@ -20,7 +20,7 @@ import React, {useState} from 'react';
 import {graphql, useFragment, useRelayEnvironment} from 'react-relay/hooks';
 import classnames from 'classnames';
 import type {Todo_todo$key} from 'relay/Todo_todo.graphql';
-import type {Todo_user} from 'relay/Todo_user.graphql';
+import type {Todo_user$key} from 'relay/Todo_user.graphql';
 
 type Props = {|
   +todo: Todo_todo$key,
