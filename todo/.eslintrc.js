@@ -17,7 +17,8 @@ module.exports = {
 
     // Mutations aren't located in the same file as Components
     'relay/unused-fields': 'off',
-    
+    'relay/generated-flow-types': 'off',
+
     // Strict Flow linting
     'flowtype/array-style-complex-type': 'error',
     'flowtype/array-style-simple-type': 'error',
@@ -39,6 +40,6 @@ module.exports = {
     react: {
       version: '16.8.1',
       flowVersion: '0.94.0',
-    }
+    },
   },
 };
