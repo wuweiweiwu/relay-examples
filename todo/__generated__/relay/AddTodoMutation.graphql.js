@@ -1,6 +1,5 @@
 /**
  * @flow
- * @relayHash 52a8912c9ede6e4261981d038aa6c5fe
  */
 
 /* eslint-disable */
@@ -75,10 +74,9 @@ fragment Todo_todo on Todo {
 const node/*: ConcreteRequest*/ = (function(){
 var v0 = [
   {
+    "defaultValue": null,
     "kind": "LocalArgument",
-    "name": "input",
-    "type": "AddTodoInput!",
-    "defaultValue": null
+    "name": "input"
   }
 ],
 v1 = [
@@ -89,169 +87,172 @@ v1 = [
   }
 ],
 v2 = {
-  "kind": "ScalarField",
   "alias": null,
-  "name": "__typename",
   "args": null,
+  "kind": "ScalarField",
+  "name": "__typename",
   "storageKey": null
 },
 v3 = {
-  "kind": "ScalarField",
   "alias": null,
-  "name": "cursor",
   "args": null,
+  "kind": "ScalarField",
+  "name": "cursor",
   "storageKey": null
 },
 v4 = {
-  "kind": "ScalarField",
   "alias": null,
-  "name": "complete",
   "args": null,
+  "kind": "ScalarField",
+  "name": "complete",
   "storageKey": null
 },
 v5 = {
-  "kind": "ScalarField",
   "alias": null,
-  "name": "id",
   "args": null,
+  "kind": "ScalarField",
+  "name": "id",
   "storageKey": null
 },
 v6 = {
-  "kind": "ScalarField",
   "alias": null,
-  "name": "text",
   "args": null,
+  "kind": "ScalarField",
+  "name": "text",
   "storageKey": null
 },
 v7 = {
-  "kind": "LinkedField",
   "alias": null,
-  "name": "user",
-  "storageKey": null,
   "args": null,
   "concreteType": "User",
+  "kind": "LinkedField",
+  "name": "user",
   "plural": false,
   "selections": [
     (v5/*: any*/),
     {
-      "kind": "ScalarField",
       "alias": null,
-      "name": "totalCount",
       "args": null,
+      "kind": "ScalarField",
+      "name": "totalCount",
       "storageKey": null
     }
-  ]
+  ],
+  "storageKey": null
 };
 return {
-  "kind": "Request",
   "fragment": {
-    "kind": "Fragment",
-    "name": "AddTodoMutation",
-    "type": "Mutation",
-    "metadata": null,
     "argumentDefinitions": (v0/*: any*/),
+    "kind": "Fragment",
+    "metadata": null,
+    "name": "AddTodoMutation",
     "selections": [
       {
-        "kind": "LinkedField",
         "alias": null,
-        "name": "addTodo",
-        "storageKey": null,
         "args": (v1/*: any*/),
         "concreteType": "AddTodoPayload",
+        "kind": "LinkedField",
+        "name": "addTodo",
         "plural": false,
         "selections": [
           {
-            "kind": "LinkedField",
             "alias": null,
-            "name": "todoEdge",
-            "storageKey": null,
             "args": null,
             "concreteType": "TodoEdge",
+            "kind": "LinkedField",
+            "name": "todoEdge",
             "plural": false,
             "selections": [
               (v2/*: any*/),
               (v3/*: any*/),
               {
-                "kind": "LinkedField",
                 "alias": null,
-                "name": "node",
-                "storageKey": null,
                 "args": null,
                 "concreteType": "Todo",
+                "kind": "LinkedField",
+                "name": "node",
                 "plural": false,
                 "selections": [
                   (v4/*: any*/),
                   (v5/*: any*/),
                   (v6/*: any*/),
                   {
+                    "args": null,
                     "kind": "FragmentSpread",
-                    "name": "Todo_todo",
-                    "args": null
+                    "name": "Todo_todo"
                   }
-                ]
+                ],
+                "storageKey": null
               }
-            ]
+            ],
+            "storageKey": null
           },
           (v7/*: any*/)
-        ]
+        ],
+        "storageKey": null
       }
-    ]
+    ],
+    "type": "Mutation",
+    "abstractKey": null
   },
+  "kind": "Request",
   "operation": {
+    "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
     "name": "AddTodoMutation",
-    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
-        "kind": "LinkedField",
         "alias": null,
-        "name": "addTodo",
-        "storageKey": null,
         "args": (v1/*: any*/),
         "concreteType": "AddTodoPayload",
+        "kind": "LinkedField",
+        "name": "addTodo",
         "plural": false,
         "selections": [
           {
-            "kind": "LinkedField",
             "alias": null,
-            "name": "todoEdge",
-            "storageKey": null,
             "args": null,
             "concreteType": "TodoEdge",
+            "kind": "LinkedField",
+            "name": "todoEdge",
             "plural": false,
             "selections": [
               (v2/*: any*/),
               (v3/*: any*/),
               {
-                "kind": "LinkedField",
                 "alias": null,
-                "name": "node",
-                "storageKey": null,
                 "args": null,
                 "concreteType": "Todo",
+                "kind": "LinkedField",
+                "name": "node",
                 "plural": false,
                 "selections": [
                   (v4/*: any*/),
                   (v5/*: any*/),
                   (v6/*: any*/)
-                ]
+                ],
+                "storageKey": null
               }
-            ]
+            ],
+            "storageKey": null
           },
           (v7/*: any*/)
-        ]
+        ],
+        "storageKey": null
       }
     ]
   },
   "params": {
-    "operationKind": "mutation",
-    "name": "AddTodoMutation",
+    "cacheID": "509eef0b493efd3d7a22a4a5625ad38e",
     "id": null,
-    "text": "mutation AddTodoMutation(\n  $input: AddTodoInput!\n) {\n  addTodo(input: $input) {\n    todoEdge {\n      __typename\n      cursor\n      node {\n        complete\n        id\n        text\n        ...Todo_todo\n      }\n    }\n    user {\n      id\n      totalCount\n    }\n  }\n}\n\nfragment Todo_todo on Todo {\n  complete\n  id\n  text\n}\n",
-    "metadata": {}
+    "metadata": {},
+    "name": "AddTodoMutation",
+    "operationKind": "mutation",
+    "text": "mutation AddTodoMutation(\n  $input: AddTodoInput!\n) {\n  addTodo(input: $input) {\n    todoEdge {\n      __typename\n      cursor\n      node {\n        complete\n        id\n        text\n        ...Todo_todo\n      }\n    }\n    user {\n      id\n      totalCount\n    }\n  }\n}\n\nfragment Todo_todo on Todo {\n  complete\n  id\n  text\n}\n"
   }
 };
 })();
 // prettier-ignore
 (node/*: any*/).hash = '51c91f7757b73ccd7f3af7ed8bfc3d00';
+
 module.exports = node;
