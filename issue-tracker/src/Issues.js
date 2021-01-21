@@ -1,6 +1,6 @@
 import graphql from 'babel-plugin-relay/macro';
 import React from 'react';
-import { usePaginationFragment } from 'react-relay/hooks';
+import { usePaginationFragment, useRelayEnvironment } from 'react-relay/hooks';
 import IssuesListItem from './IssuesListItem';
 
 const { useCallback } = React;
@@ -40,6 +40,9 @@ export default function Issues(props) {
     props.repository,
   );
 
+  const environment = useRelayEnvironment();
+  const disposableRef = React.useRef();
+
   // Callback to paginate the issues list
   const loadMore = useCallback(() => {
     // Don't fetch again if we're already loading the next page
@@ -48,6 +51,24 @@ export default function Issues(props) {
     }
     loadNext(10);
   }, [isLoadingNext, loadNext]);
+
+  const doUpdate = useCallback(() => {
+    const disposable = environment.applyUpdate({
+      storeUpdater: store => {
+        const issue = store.get('MDU6SXNzdWUxMDE0NzU2NjA=');
+
+        console.log(issue.getValue('title'));
+
+        issue.setValue('TEST TITLE', 'title');
+      },
+    });
+
+    disposableRef.current = disposable;
+  }, [environment]);
+
+  const undoUpdate = useCallback(() => {
+    disposableRef.current.dispose();
+  }, []);
 
   return (
     <div className="issues">
@@ -70,6 +91,9 @@ export default function Issues(props) {
       >
         Load More
       </button>
+
+      <button onClick={doUpdate}>DO</button>
+      <button onClick={undoUpdate}>UNDO</button>
     </div>
   );
 }
